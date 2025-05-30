@@ -5,6 +5,9 @@
   "references": [
     {
       "path": "./apps/declarative-mode"
+    },
+    {
+      "path": "./apps/data-mode"
     }
   ]
 }

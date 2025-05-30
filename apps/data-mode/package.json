@@ -1,0 +1,8 @@
+{
+  "name": "@react-router-updates/data-mode",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "data-mode"
+  }
+}
