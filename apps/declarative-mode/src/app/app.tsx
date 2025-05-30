@@ -1,15 +1,31 @@
-import NxWelcome from './nx-welcome';
-
 import { Route, Routes, Link } from 'react-router-dom';
 
+import { Button } from '@react-router-updates/ui/components/ui/button';
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@react-router-updates/ui/components/ui/tabs';
 export function App() {
   return (
     <div>
-      <NxWelcome title="@react-router-updates/declarative-mode" />
-
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
+      <div className="flex max-w-md mx-auto">
+        <Tabs defaultValue="account">
+          <TabsList>
+            <TabsTrigger value="account">Account</TabsTrigger>
+            <TabsTrigger value="password">Password</TabsTrigger>
+          </TabsList>
+          <TabsContent value="account">
+            <p>Account content</p>
+            <Button className="w-auto"> Test button</Button>
+          </TabsContent>
+          <TabsContent value="password">
+            <p>Password content</p>
+            <Button className="w-auto"> Test button</Button>
+          </TabsContent>
+        </Tabs>
+      </div>
       <br />
       <hr />
       <br />

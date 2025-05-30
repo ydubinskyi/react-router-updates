@@ -4,5 +4,8 @@
   "private": true,
   "nx": {
     "name": "declarative-mode"
+  },
+  "dependencies": {
+    "@react-router-updates/ui": "workspace:*"
   }
 }

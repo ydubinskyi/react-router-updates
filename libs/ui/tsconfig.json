@@ -1,0 +1,17 @@
+{
+  "files": [],
+  "include": [],
+  "references": [
+    {
+      "path": "./tsconfig.lib.json"
+    }
+  ],
+  "extends": "../../tsconfig.base.json",
+  // added only for shadcn/ui CLI to work properly
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@react-router-updates/ui/*": ["./src/*"]
+    }
+  }
+}
