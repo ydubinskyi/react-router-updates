@@ -4,5 +4,9 @@
   "private": true,
   "nx": {
     "name": "data-mode"
+  },
+  "dependencies": {
+    "@react-router-updates/ui": "workspace:*",
+    "@react-router-updates/data-access": "workspace:*"
   }
 }

@@ -1,0 +1,30 @@
+{
+  "name": "@react-router-updates/mock-api",
+  "version": "0.0.1",
+  "private": true,
+  "nx": {
+    "name": "mock-api",
+    "targets": {
+      "serve": {
+        "continuous": true,
+        "executor": "@nx/js:node",
+        "defaultConfiguration": "development",
+        "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "mock-api:build",
+          "runBuildTargetDependencies": false
+        },
+        "configurations": {
+          "development": {
+            "buildTarget": "mock-api:build:development"
+          },
+          "production": {
+            "buildTarget": "mock-api:build:production"
+          }
+        }
+      }
+    }
+  }
+}

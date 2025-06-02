@@ -1,50 +1,41 @@
-import NxWelcome from './nx-welcome';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 
-import { Route, Routes, Link } from 'react-router-dom';
+import { DashboardLayout } from '@react-router-updates/ui/components/dashboard-layout';
 
-export function App() {
-  return (
-    <div>
-      <NxWelcome title="data-mode" />
+import { DashboardOverviewPage } from './pages/dashboard-overview-page';
+import { DashboardSettingsPage } from './pages/dashboard-settings-page';
+import { UsersPage, loader as usersLoader } from './pages/users-page';
+import { ProductsPage, loader as productsLoader } from './pages/products-page';
 
-      {/* START: routes */}
-      {/* These routes and navigation have been generated for you */}
-      {/* Feel free to move and update them to fit your needs */}
-      <br />
-      <hr />
-      <br />
-      <div role="navigation">
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/page-2">Page 2</Link>
-          </li>
-        </ul>
-      </div>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div>
-              This is the generated root route.{' '}
-              <Link to="/page-2">Click here for page 2.</Link>
-            </div>
-          }
-        />
-        <Route
-          path="/page-2"
-          element={
-            <div>
-              <Link to="/">Click here to go back to root page.</Link>
-            </div>
-          }
-        />
-      </Routes>
-      {/* END: routes */}
-    </div>
-  );
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <DashboardLayout title="RR Data mode" />,
+    children: [
+      { index: true, Component: DashboardOverviewPage },
+      {
+        path: '/settings',
+        Component: DashboardSettingsPage,
+      },
+      {
+        path: '/content',
+        children: [
+          {
+            path: 'users',
+            loader: usersLoader,
+            Component: UsersPage,
+          },
+          {
+            path: 'products',
+            loader: productsLoader,
+            Component: ProductsPage,
+          },
+        ],
+      },
+    ],
+  },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App;

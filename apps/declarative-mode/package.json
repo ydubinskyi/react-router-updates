@@ -6,6 +6,7 @@
     "name": "declarative-mode"
   },
   "dependencies": {
-    "@react-router-updates/ui": "workspace:*"
+    "@react-router-updates/ui": "workspace:*",
+    "@react-router-updates/data-access": "workspace:*"
   }
 }
