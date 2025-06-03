@@ -13,13 +13,13 @@ import {
 import { UsersTable } from '@react-router-updates/ui/components/users-table';
 import { fetchUsers } from '@react-router-updates/data-access';
 
-export async function loader({ request }: { request: Request }) {
+export async function clientLoader({ request }: { request: Request }) {
   const users = fetchUsers({ signal: request.signal });
   return { data: users };
 }
 
-export function UsersPage() {
-  const { data } = useLoaderData<typeof loader>();
+export default function UsersPage() {
+  const { data } = useLoaderData<typeof clientLoader>();
 
   return (
     <>

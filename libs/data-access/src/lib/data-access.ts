@@ -23,7 +23,6 @@ const API_BASE_URL = 'http://localhost:3333';
 export async function fetchUsers({
   signal,
 }: { signal?: AbortSignal } = {}): Promise<User[]> {
-  console.log('Fetching products from API...', { signal });
   const response = await fetch(`${API_BASE_URL}/api/users`, { signal });
   if (!response.ok) {
     throw new Error('Failed to fetch users');
@@ -34,7 +33,6 @@ export async function fetchUsers({
 export async function fetchProducts({
   signal,
 }: { signal?: AbortSignal } = {}): Promise<Product[]> {
-  console.log('Fetching products from API...', { signal });
   const response = await fetch(`${API_BASE_URL}/api/products`, { signal });
   if (!response.ok) {
     throw new Error('Failed to fetch products');

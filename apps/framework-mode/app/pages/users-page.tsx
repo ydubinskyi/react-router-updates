@@ -1,4 +1,3 @@
-import React from 'react';
 import { Await, NavLink, useLoaderData } from 'react-router';
 
 import { PageHeader } from '@react-router-updates/ui/components/page-header';
@@ -12,13 +11,14 @@ import {
 } from '@react-router-updates/ui/components/ui/breadcrumb';
 import { UsersTable } from '@react-router-updates/ui/components/users-table';
 import { fetchUsers } from '@react-router-updates/data-access';
+import React from 'react';
 
 export async function loader({ request }: { request: Request }) {
   const users = fetchUsers({ signal: request.signal });
   return { data: users };
 }
 
-export function UsersPage() {
+export default function UsersPage() {
   const { data } = useLoaderData<typeof loader>();
 
   return (

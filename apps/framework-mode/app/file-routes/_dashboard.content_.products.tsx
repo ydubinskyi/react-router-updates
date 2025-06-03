@@ -1,5 +1,4 @@
-import React from 'react';
-import { Await, NavLink, useLoaderData } from 'react-router';
+import { NavLink, useLoaderData } from 'react-router';
 
 import { PageHeader } from '@react-router-updates/ui/components/page-header';
 import {
@@ -10,15 +9,15 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@react-router-updates/ui/components/ui/breadcrumb';
-import { UsersTable } from '@react-router-updates/ui/components/users-table';
-import { fetchUsers } from '@react-router-updates/data-access';
+import { ProductsTable } from '@react-router-updates/ui/components/products-table';
+import { fetchProducts } from '@react-router-updates/data-access';
 
 export async function loader({ request }: { request: Request }) {
-  const users = fetchUsers({ signal: request.signal });
-  return { data: users };
+  const products = await fetchProducts({ signal: request.signal });
+  return { data: products };
 }
 
-export function UsersPage() {
+export default function ProductsPage() {
   const { data } = useLoaderData<typeof loader>();
 
   return (
@@ -33,19 +32,13 @@ export function UsersPage() {
             </BreadcrumbItem>
             <BreadcrumbSeparator className="hidden md:block" />
             <BreadcrumbItem>
-              <BreadcrumbPage>Users</BreadcrumbPage>
+              <BreadcrumbPage>Products</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
       </PageHeader>
 
-      <React.Suspense fallback={<UsersTable.Skeleton />}>
-        <Await
-          resolve={data}
-          errorElement={<p>Could not load users 😬</p>}
-          children={(resolvedData) => <UsersTable data={resolvedData} />}
-        />
-      </React.Suspense>
+      <ProductsTable data={data} />
     </>
   );
 }
